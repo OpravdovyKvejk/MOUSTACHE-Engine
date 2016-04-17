@@ -20,6 +20,7 @@
       <sprite>sprites\sPointer</sprite>
       <sprite>sprites\SPLASH</sprite>
     </sprites>
+    <sprite>sprites\texConsole</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\bgEditor</background>
@@ -39,6 +40,7 @@
     <script>scripts\d3d_draw_floor_3d.gml</script>
     <script>scripts\collision_sector.gml</script>
     <script>scripts\trigger.gml</script>
+    <script>scripts\console_command.gml</script>
   </scripts>
   <objects name="objects">
     <object>objects\oMap0</object>

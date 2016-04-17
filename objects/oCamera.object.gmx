@@ -36,6 +36,13 @@ commandSent=false;
 weapon=0;
 triggered=false;
 
+
+consoleOpen=false;
+consoleText="MOUSTACHE Engine Alpha 2#Debugged on "+string(current_day)+"."+string(current_month)+"."+string(current_year)+"###";
+consoleEnterText="";
+
+isGhost=false;
+
 hp=100;
 energy=100;
 charge=100;
@@ -130,34 +137,35 @@ if (mouse_check_button_pressed(mb_left)){ //shooting
         z=oCamera.z+zz*10;
     }*/
 }
-
-if (keyboard_check(ord('S'))){
-    pSpeed=pCurrSpeed;
-    x-=lengthdir_x(pSpeed,direction);
-    y-=lengthdir_y(pSpeed,direction);
-    z-=zz*pSpeed;
-    if (z&lt;1){
-        z=1;
+if (!consoleOpen){
+    if (keyboard_check(ord('S'))){
+        pSpeed=pCurrSpeed;
+        x-=lengthdir_x(pSpeed,direction);
+        y-=lengthdir_y(pSpeed,direction);
+        z-=zz*pSpeed;
+        if (z&lt;1){
+            z=1;
+        }
     }
-}
-if (keyboard_check(ord('W'))){
-    pSpeed=pCurrSpeed;
-    x-=lengthdir_x(-pSpeed,direction);
-    y-=lengthdir_y(-pSpeed,direction);
-    z+=zz*pSpeed;
-    if (z&lt;1){
-        z=1;
+    if (keyboard_check(ord('W'))){
+        pSpeed=pCurrSpeed;
+        x-=lengthdir_x(-pSpeed,direction);
+        y-=lengthdir_y(-pSpeed,direction);
+        z+=zz*pSpeed;
+        if (z&lt;1){
+            z=1;
+        }
     }
-}
-if (keyboard_check(ord('A'))){
-    pSpeed=pCurrSpeed;
-    x-=lengthdir_x(pSpeed,direction-90);
-    y-=lengthdir_y(pSpeed,direction-90);
-}
-if (keyboard_check(ord('D'))){
-    pSpeed=pCurrSpeed;
-    x-=lengthdir_x(pSpeed,direction+90);
-    y-=lengthdir_y(pSpeed,direction+90);
+    if (keyboard_check(ord('A'))){
+        pSpeed=pCurrSpeed;
+        x-=lengthdir_x(pSpeed,direction-90);
+        y-=lengthdir_y(pSpeed,direction-90);
+    }
+    if (keyboard_check(ord('D'))){
+        pSpeed=pCurrSpeed;
+        x-=lengthdir_x(pSpeed,direction+90);
+        y-=lengthdir_y(pSpeed,direction+90);
+    }
 }
 if (keyboard_check(ord('W')) or keyboard_check(ord('S')) or keyboard_check(ord('A')) or keyboard_check(ord('D'))){
     if (zState=0){
@@ -189,11 +197,13 @@ if (keyboard_check_direct(vk_shift)){
 }else{
     pCurrSpeed=pWalkSpeed;
 }
-direction+=xx/4;
-zz+=zzz/360;
-window_mouse_set(window_get_width()/2,window_get_height()/2);
-if (zz&gt;1.5) zz=1.5;
-if (zz&lt;-1.5) zz=-1.5;
+if (!consoleOpen){
+    direction+=xx/4;
+    zz+=zzz/360;
+    window_mouse_set(window_get_width()/2,window_get_height()/2);
+    if (zz&gt;1.5) zz=1.5;
+    if (zz&lt;-1.5) zz=-1.5;
+}
 
 
 
@@ -229,6 +239,24 @@ if (keyboard_check(vk_alt) and keyboard_check_pressed(vk_delete)){
 if (keyboard_check_pressed(vk_divide)){
     screen_save(get_save_filename_ext("PNG image file|*.png", "", "C:\", "Save screenshot as..."));
 }
+if (keyboard_check_pressed(vk_delete)){
+    consoleOpen=!consoleOpen;
+    consoleEnterText="";
+    keyboard_string="";
+}
+if (consoleOpen){
+    if (keyboard_check_pressed(vk_anykey) and !keyboard_check_pressed(vk_enter) and !keyboard_check_pressed(vk_backspace)){
+        consoleEnterText+=keyboard_string;
+        keyboard_string="";
+    }
+    if (keyboard_check_pressed(vk_enter)){
+        console_command(consoleEnterText);
+        consoleEnterText="";
+    }
+    if (keyboard_check_pressed(vk_backspace)){
+        consoleEnterText=string_delete(consoleEnterText,string_length(consoleEnterText),1);
+    }
+}
 </string>
           </argument>
         </arguments>
@@ -251,9 +279,20 @@ if (keyboard_check_pressed(vk_divide)){
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>d3d_set_projection_ext(x,y,z,x+cos(direction*pi/180),y-sin(direction*pi/180),z+zz,0,0,z,fov,view_wview[0]/view_hview[0],1,16000);
+            <string>if (consoleOpen){
+    d3d_set_projection_ortho(0,0,room_width,room_height,0);
+    draw_set_color(c_yellow);
+    draw_sprite(texConsole,0,0,0);
+    draw_text(0,0,string(consoleText)+"# #"+string(consoleEnterText));
+    draw_set_color(c_white);
+}
+
+
+
+d3d_set_projection_ext(x,y,z,x+cos(direction*pi/180),y-sin(direction*pi/180),z+zz,0,0,z,fov,view_wview[0]/view_hview[0],1,16000);
 draw_set_alpha(1);
 draw_set_color(c_white);
+
 </string>
           </argument>
         </arguments>
