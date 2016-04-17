@@ -1,0 +1,108 @@
+///level_save(mapId)
+a=file_text_open_write("moustache_level"+string(argument0)+".mlf");
+file_text_write_string(a,"{MAP}");
+    file_text_writeln(a);
+file_text_write_string(a,"<ID>"+string(argument0));
+    file_text_writeln(a);
+
+while(instance_number(oSlope)>0){
+    var slope=instance_nearest(0,0,oSlope);
+    file_text_write_string(a,"[SLOPE]");
+        file_text_writeln(a);
+    file_text_write_string(a,"<X>"+string(slope.x));
+        file_text_writeln(a);
+    file_text_write_string(a,"<Y>"+string(slope.y));
+        file_text_writeln(a);
+    file_text_write_string(a,"<Z>"+string(slope.z));
+        file_text_writeln(a);
+    file_text_write_string(a,"<ID>"+string(slope.iD));
+        file_text_writeln(a);
+    instance_deactivate_object(slope);
+}
+while(instance_number(oSector)>0){
+    var sector=instance_nearest(0,0,oSector);
+    file_text_write_string(a,"[SECTOR]");
+        file_text_writeln(a);
+    file_text_write_string(a,"<X1>"+string(sector.x1));
+        file_text_writeln(a);
+    file_text_write_string(a,"<Y1>"+string(sector.y1));
+        file_text_writeln(a);
+    file_text_write_string(a,"<X2>"+string(sector.x2));
+        file_text_writeln(a);
+    file_text_write_string(a,"<Y2>"+string(sector.y2));
+        file_text_writeln(a);
+    file_text_write_string(a,"<X3>"+string(sector.x3));
+        file_text_writeln(a);
+    file_text_write_string(a,"<Y3>"+string(sector.y3));
+        file_text_writeln(a);
+    file_text_write_string(a,"<ID>"+string(sector.iD));
+        file_text_writeln(a);
+    file_text_write_string(a,"<FLOORZ>"+string(sector.floorZ));
+        file_text_writeln(a);
+    file_text_write_string(a,"<FLOORHEIGHT>"+string(sector.floorHeight));
+        file_text_writeln(a);
+    file_text_write_string(a,"<CEILINGZ>"+string(sector.ceilingZ));
+        file_text_writeln(a);
+    file_text_write_string(a,"<CEILINGHEIGHT>"+string(sector.ceilingHeight));
+        file_text_writeln(a);
+    file_text_write_string(a,"<ISTRIGGER>"+string(sector.isTrigger));
+        file_text_writeln(a);
+    file_text_write_string(a,"<TRIGGERID>"+string(sector.triggerId));
+        file_text_writeln(a);
+    instance_deactivate_object(sector);
+}
+while(instance_number(oLine)>0){
+    var line=instance_nearest(0,0,oLine);
+    file_text_write_string(a,"[WALL]");
+        file_text_writeln(a);
+    file_text_write_string(a,"<X1>"+string(line.x1));
+        file_text_writeln(a);
+    file_text_write_string(a,"<Y1>"+string(line.y1));
+        file_text_writeln(a);
+    file_text_write_string(a,"<X2>"+string(line.x2));
+        file_text_writeln(a);
+    file_text_write_string(a,"<Y2>"+string(line.y2));
+        file_text_writeln(a);
+    file_text_write_string(a,"<Z>"+string(line.z));
+        file_text_writeln(a);
+    file_text_write_string(a,"<HEIGHT>"+string(line.height));
+        file_text_writeln(a);
+    file_text_write_string(a,"<ID>"+string(line.iD));
+        file_text_writeln(a);
+    instance_deactivate_object(line);
+}
+while(instance_number(oPlayer)>0){
+    file_text_write_string(a,"[PLAYER]");
+        file_text_writeln(a);
+    file_text_write_string(a,"<X>"+string(oPlayer.x));
+        file_text_writeln(a);
+    file_text_write_string(a,"<Y>"+string(oPlayer.y));
+        file_text_writeln(a);
+    file_text_write_string(a,"<Z>"+string(oPlayer.z));
+        file_text_writeln(a);
+    file_text_write_string(a,"<ID>"+string(oPlayer.iD));
+        file_text_writeln(a);
+    instance_deactivate_object(oPlayer);
+}
+while(instance_number(oLight)>0){
+    var light=instance_nearest(0,0,oLight);
+    file_text_write_string(a,"[LIGHT]");
+        file_text_writeln(a);
+    file_text_write_string(a,"<X>"+string(light.x));
+        file_text_writeln(a);
+    file_text_write_string(a,"<Y>"+string(light.y));
+        file_text_writeln(a);
+    file_text_write_string(a,"<Z>"+string(light.z));
+        file_text_writeln(a);
+    file_text_write_string(a,"<ID>"+string(light.iD));
+        file_text_writeln(a);
+    instance_deactivate_object(light);
+}
+
+file_text_close(a);
+
+instance_activate_object(oPlayer);
+instance_activate_object(oLight);
+instance_activate_object(oSlope);
+instance_activate_object(oLine);
+instance_activate_object(oSector);
