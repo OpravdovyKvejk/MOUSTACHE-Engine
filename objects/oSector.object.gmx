@@ -51,6 +51,8 @@ triggered=false;
           <argument>
             <kind>1</kind>
             <string>oCamera.active=false;
+oCamera.colliding=false;
+trigger(triggerId,false);
 </string>
           </argument>
         </arguments>
@@ -74,13 +76,19 @@ triggered=false;
           <argument>
             <kind>1</kind>
             <string>if (instance_number(oCamera)&gt;0){
-    trigger(triggerId,false);
     if (collision_sector(oCamera.x,oCamera.y,oCamera.z+oCamera.height)){
         if (isTrigger){
             trigger(triggerId,true);
         }
-        oCamera.sectorZ=floorZ+floorHeight;
+        if (oCamera.colliding){
+            if (oCamera.sectorZ&lt;floorZ+floorHeight){
+                oCamera.sectorZ=floorZ+floorHeight;
+            }
+        }else{
+            oCamera.sectorZ=floorZ+floorHeight;
+        }
         oCamera.active=true;
+        oCamera.colliding=true;
     }
 }
 </string>

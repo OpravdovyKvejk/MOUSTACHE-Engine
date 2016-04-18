@@ -38,15 +38,18 @@ sectorZ=0;
 commandSent=false;
 weapon=0;
 triggered=false;
+colliding=false;
 
-active=false;
+active=false; //DEV
+isGhost=false; //DEV
+
+wgravity=1;
+wgravityconst=1;
 
 
 consoleOpen=false;
 consoleText="MOUSTACHE Engine Alpha 2#Debugged on "+string(current_day)+"."+string(current_month)+"."+string(current_year)+"###";
 consoleEnterText="";
-
-isGhost=false;
 
 hp=100;
 energy=100;
@@ -221,6 +224,16 @@ if (abs(prevSectorZ-sectorZ)&lt;=16){
     z-=prevSectorZ-sectorZ;
 }
 
+if (z&gt;sectorZ){
+    z-=wgravity*wgravityconst;
+    wgravityconst+=0.2;
+}
+if (z&lt;sectorZ){
+    z+=0.2;
+}
+if (z=sectorZ){
+    wgravityconst=1;
+}
 
 prevSectorZ=sectorZ;
 global.camx=x;
