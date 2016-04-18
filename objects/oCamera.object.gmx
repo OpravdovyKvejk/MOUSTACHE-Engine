@@ -25,7 +25,9 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>pSpeed=0;
+            <string>load_models();
+
+pSpeed=0;
 pWalkSpeed=2;
 pRunSpeed=4;
 pCurrSpeed=0;
@@ -220,19 +222,21 @@ if (!consoleOpen){
 }
 
 
-if (abs(prevSectorZ-sectorZ)&lt;=16){
-    z-=prevSectorZ-sectorZ;
-}
-
-if (z&gt;sectorZ){
-    z-=wgravity*wgravityconst;
-    wgravityconst+=0.2;
-}
-if (z&lt;sectorZ){
-    z+=0.2;
-}
-if (z=sectorZ){
-    wgravityconst=1;
+if (!isGhost){
+    if (abs(prevSectorZ-sectorZ)&lt;=16){
+        z-=prevSectorZ-sectorZ;
+    }
+    
+    if (z&gt;sectorZ){
+        z-=wgravity*wgravityconst;
+        wgravityconst+=0.2;
+    }
+    if (z&lt;sectorZ){
+        z+=0.2;
+    }
+    if (z=sectorZ){
+        wgravityconst=1;
+    }
 }
 
 prevSectorZ=sectorZ;
@@ -321,6 +325,15 @@ d3d_set_projection_ext(x,y,z-zw+height,x+cos(direction*pi/180),y-sin(direction*p
 draw_set_alpha(1);
 draw_set_color(c_white);
 
+d3d_transform_set_identity();
+d3d_transform_add_rotation_x(270);
+d3d_transform_add_rotation_y(zz*40);
+d3d_transform_add_rotation_z(direction);
+d3d_transform_add_translation(x+lengthdir_x(zz,direction),y+lengthdir_y(zz,direction),z+height-2-zw/1.5-zz);
+
+draw_set_color(c_white);
+d3d_model_draw(weapGHook,0,0,0,sprite_get_texture(texWallActive,0));
+d3d_transform_set_identity();
 </string>
           </argument>
         </arguments>
