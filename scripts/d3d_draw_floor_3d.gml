@@ -12,5 +12,5 @@ d3d_primitive_end();
 texture_set_repeat(false);
 
 d3d_draw_wall(argument0,argument1,argument6,argument2,argument3,argument6+argument7,argument8,line_get_length(argument0,argument1,argument2,argument3)/8,-argument7/8);
-d3d_draw_wall(argument2,argument3,argument6,argument4,argument5,argument6+argument7,argument8,line_get_length(argument0,argument1,argument2,argument3)/8,-argument7/8);
-d3d_draw_wall(argument4,argument5,argument6,argument0,argument1,argument6+argument7,argument8,line_get_length(argument0,argument1,argument2,argument3)/8,-argument7/8);
+d3d_draw_wall(argument2,argument3,argument6,argument4,argument5,argument6+argument7,argument8,line_get_length(argument2,argument3,argument4,argument5)/8,-argument7/8);
+d3d_draw_wall(argument4,argument5,argument6,argument0,argument1,argument6+argument7,argument8,line_get_length(argument4,argument5,argument0,argument1)/8,-argument7/8);
