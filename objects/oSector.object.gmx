@@ -33,6 +33,29 @@ triggered=false;
         </arguments>
       </action>
     </event>
+    <event eventtype="3" enumb="1">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>oCamera.active=false;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="3" enumb="0">
       <action>
         <libid>1</libid>
@@ -52,10 +75,12 @@ triggered=false;
             <kind>1</kind>
             <string>if (instance_number(oCamera)&gt;0){
     trigger(triggerId,false);
-    if collision_sector(oCamera.x,oCamera.y,oCamera.z){
+    if (collision_sector(oCamera.x,oCamera.y,oCamera.z+oCamera.height)){
         if (isTrigger){
             trigger(triggerId,true);
         }
+        oCamera.sectorZ=floorZ+floorHeight;
+        oCamera.active=true;
     }
 }
 </string>
