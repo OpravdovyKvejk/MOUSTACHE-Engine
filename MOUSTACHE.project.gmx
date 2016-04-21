@@ -3,25 +3,7 @@
   <Configs name="configs">
     <Config>Configs\Default</Config>
   </Configs>
-  <datafiles number="2" name="datafiles">
-    <datafile>
-      <name>weapGHook.d3d</name>
-      <exists>-1</exists>
-      <size>1464267</size>
-      <exportAction>2</exportAction>
-      <exportDir></exportDir>
-      <overwrite>0</overwrite>
-      <freeData>-1</freeData>
-      <removeEnd>0</removeEnd>
-      <store>0</store>
-      <ConfigOptions>
-        <Config name="Default">
-          <CopyToMask>9223372036854775807</CopyToMask>
-        </Config>
-      </ConfigOptions>
-      <filename>weapGHook.d3d</filename>
-    </datafile>
-  </datafiles>
+  <datafiles number="4" name="datafiles"/>
   <NewExtensions/>
   <sounds name="sound"/>
   <sprites name="sprites">
@@ -61,7 +43,12 @@
     <script>scripts\trigger.gml</script>
     <script>scripts\console_command.gml</script>
     <script>scripts\load_models.gml</script>
+    <script>scripts\LS.gml</script>
   </scripts>
+  <shaders name="shaders">
+    <shader type="GLSLES">shaders\shdLight.shader</shader>
+    <shader type="GLSLES">shaders\shdLightNormal.shader</shader>
+  </shaders>
   <objects name="objects">
     <object>objects\oMap0</object>
     <object>objects\oMapCustom</object>

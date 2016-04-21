@@ -52,10 +52,6 @@ while(!file_text_eof(mapFile)){
                                     mapFileLine=file_text_readln(mapFile);
                                     global.createY2=real(string_copy(mapFileLine,5,99999999));
                                     mapFileLine=file_text_readln(mapFile);
-                                    global.createX3=real(string_copy(mapFileLine,5,99999999));
-                                    mapFileLine=file_text_readln(mapFile);
-                                    global.createY3=real(string_copy(mapFileLine,5,99999999));
-                                    mapFileLine=file_text_readln(mapFile);
                                     global.createId=real(string_copy(mapFileLine,5,99999999));
                                     mapFileLine=file_text_readln(mapFile);
                                     global.createFloorZ=real(string_copy(mapFileLine,9,99999999));
@@ -74,8 +70,6 @@ while(!file_text_eof(mapFile)){
                                         y1=global.createY1;
                                         x2=global.createX2;
                                         y2=global.createY2;
-                                        x3=global.createX3;
-                                        y3=global.createY3;
                                         iD=global.createId;
                                         floorZ=global.createFloorZ;
                                         floorHeight=global.createFloorHeight;

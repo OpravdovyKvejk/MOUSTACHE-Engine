@@ -28,7 +28,7 @@ if (string_pos("ghost",argument0)!=0){
 }
 if (string_pos("active",argument0)!=0){
     if (string_delete(argument0,1,6)="?"){
-        consoleText+="active = "+string(oCamera.sectorZ)+"#";
+        consoleText+="active = "+string(oCamera.wjumppower)+"#";
     }
     commandSuccesful=true;
 }

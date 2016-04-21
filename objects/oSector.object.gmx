@@ -96,7 +96,7 @@ trigger(triggerId,false);
         </arguments>
       </action>
     </event>
-    <event eventtype="8" enumb="0">
+    <event eventtype="7" enumb="10">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -114,8 +114,8 @@ trigger(triggerId,false);
           <argument>
             <kind>1</kind>
             <string>draw_set_color(c_white);
-d3d_draw_floor_3d(x1,y1,x2,y2,x3,y3,floorZ,floorHeight,sprite_get_texture(txFloor,0));
-d3d_draw_floor_3d(x1,y1,x2,y2,x3,y3,ceilingZ,ceilingHeight,sprite_get_texture(txFloor,0));
+d3d_draw_floor_3d(x1,y1,x2,y2,floorZ,floorHeight,sprite_get_texture(txFloor,0));
+d3d_draw_floor_3d(x1,y1,x2,y2,ceilingZ,ceilingHeight,sprite_get_texture(txFloor,0));
 </string>
           </argument>
         </arguments>
