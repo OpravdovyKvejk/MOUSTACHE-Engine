@@ -51,6 +51,7 @@ isGhost=false; //DEV
 wgravity=1;
 wgravityconst=1;
 wgravdistance=0;
+wjumppower=0;
 
 consoleOpen=false;
 consoleText="MOUSTACHE Engine Alpha 2#Debugged on "+string(current_day)+"."+string(current_month)+"."+string(current_year)+"###";
@@ -264,7 +265,7 @@ if (!consoleOpen){
 
 
 if (!isGhost){
-    if (abs(prevSectorZ-sectorZ)&lt;=16){
+    if (abs(prevSectorZ-sectorZ)&lt;=8){
         z-=prevSectorZ-sectorZ;
     }//stairs walk
     

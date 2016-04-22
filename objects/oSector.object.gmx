@@ -90,6 +90,10 @@ trigger(triggerId,false);
         oCamera.active=true;
         oCamera.colliding=true;
     }
+    
+    if (collision_sector_floor(oCamera.x,oCamera.y,oCamera.z,oCamera.height) or collision_sector_ceiling(oCamera.x,oCamera.y,oCamera.z,oCamera.height)){
+        camera_collide();
+    }
 }
 </string>
           </argument>

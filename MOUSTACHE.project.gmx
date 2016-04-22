@@ -37,22 +37,26 @@
     <script>scripts\line_get_length.gml</script>
     <script>scripts\point_get_z_collision.gml</script>
     <script>scripts\point_get_z_collision_ext.gml</script>
+    <script>scripts\plane_get_z_collision_ext.gml</script>
     <script>scripts\real_snap.gml</script>
     <script>scripts\d3d_draw_floor_3d.gml</script>
+    <script>scripts\collision_sector_point.gml</script>
+    <script>scripts\collision_sector_floor_point.gml</script>
+    <script>scripts\collision_sector_ceiling_point.gml</script>
     <script>scripts\collision_sector.gml</script>
+    <script>scripts\collision_sector_floor.gml</script>
+    <script>scripts\collision_sector_ceiling.gml</script>
     <script>scripts\trigger.gml</script>
     <script>scripts\console_command.gml</script>
     <script>scripts\load_models.gml</script>
     <script>scripts\LS.gml</script>
+    <script>scripts\camera_collide.gml</script>
   </scripts>
   <shaders name="shaders">
     <shader type="GLSLES">shaders\shdLight.shader</shader>
     <shader type="GLSLES">shaders\shdLightNormal.shader</shader>
   </shaders>
   <objects name="objects">
-    <object>objects\oMap0</object>
-    <object>objects\oMapCustom</object>
-    <object>objects\oSettings</object>
     <objects name="old">
       <object>objects\oPointer</object>
       <object>objects\oMouse</object>
@@ -74,6 +78,13 @@
     </objects>
     <objects name="chr">
       <object>objects\oCamera</object>
+    </objects>
+    <objects name="maps">
+      <object>objects\oMap0</object>
+      <object>objects\oMapCustom</object>
+    </objects>
+    <objects name="sys">
+      <object>objects\oSettings</object>
     </objects>
   </objects>
   <rooms name="rooms">
